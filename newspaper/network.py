@@ -102,12 +102,13 @@ class MRequest(object):
         self.timeout = config.request_timeout
         self.proxies = config.proxies
         self.headers = config.headers
+        self.verify = config.verify
         self.resp = None
 
     def send(self):
         try:
             self.resp = requests.get(self.url, **get_request_kwargs(
-                self.timeout, self.useragent, self.proxies, self.headers))
+                self.timeout, self.useragent, self.proxies, self.headers, self.verify))
             if self.config.http_success_only:
                 self.resp.raise_for_status()
         except requests.exceptions.RequestException as e:
