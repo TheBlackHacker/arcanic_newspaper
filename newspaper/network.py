@@ -55,12 +55,13 @@ def get_html_2XX_only(url, config=None, response=None):
     timeout = config.request_timeout
     proxies = config.proxies
     headers = config.headers
+    verify = config.verify
 
     if response is not None:
         return _get_html_from_response(response, config)
 
     response = requests.get(
-        url=url, **get_request_kwargs(timeout, useragent, proxies, headers))
+        url=url, **get_request_kwargs(timeout, useragent, proxies, headers, verify))
 
     html = _get_html_from_response(response, config)
 
