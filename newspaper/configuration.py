@@ -70,6 +70,7 @@ class Configuration(object):
         self.number_threads = 10
 
         self.verbose = False  # for debugging
+        self.verify = False
 
         self.thread_timeout_seconds = 1
         self.ignored_content_types_defaults = {}
