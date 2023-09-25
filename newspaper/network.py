@@ -21,7 +21,7 @@ log = logging.getLogger(__name__)
 FAIL_ENCODING = 'ISO-8859-1'
 
 
-def get_request_kwargs(timeout, useragent, proxies, headers):
+def get_request_kwargs(timeout, useragent, proxies, headers, verify=False):
     """This Wrapper method exists b/c some values in req_kwargs dict
     are methods which need to be called every time we make a request
     """
@@ -30,7 +30,8 @@ def get_request_kwargs(timeout, useragent, proxies, headers):
         'cookies': cj(),
         'timeout': timeout,
         'allow_redirects': True,
-        'proxies': proxies
+        'proxies': proxies,
+        'verify': verify
     }
 
 
